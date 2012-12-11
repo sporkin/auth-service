@@ -1,4 +1,4 @@
 ui-web
 ======
 
-sporkin web front-end
+sporkin front-end assets server, public REST api, services mashup driver
