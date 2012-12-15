@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-UiFront::Application.load_tasks
+AuthService::Application.load_tasks

@@ -8,7 +8,16 @@ class User < ActiveRecord::Base
   validates :email, :presence => true
   validates :first_name, :presence => true
   validates :last_name, :presence => true
-  validates :password, :confirmation => true
+
+  def name
+    "#{first_name} #{last_name}"
+  end
+
+  def to_builder
+    user = Jbuilder.new
+    user.(self, :name, :email)
+    user
+  end
 
   private
   def encrypt_password

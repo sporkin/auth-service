@@ -1,4 +1,6 @@
-UiFront::Application.routes.draw do
+AuthService::Application.routes.draw do
+  resource :users, :only => [:create]
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
