@@ -7,6 +7,11 @@ describe User do
         User.new(attribute => "").error_on(attribute).should == ["can't be blank"]
       end
     end
+
+    it "converts email to lowercase" do
+      user = User.new :email => "Foo@Bar.com", :password => "s", :password_confirmation => "s", :first_name => "f", :last_name => "l"
+      user.email.should == "foo@bar.com"
+    end
   end
 
   describe "#authenticate" do
