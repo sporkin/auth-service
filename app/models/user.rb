@@ -3,9 +3,10 @@ class User < ActiveRecord::Base
   attr_accessor :password
 
   before_save :encrypt_password
+  after_create :publish_user_creation_event
 
   validates :password, :presence => true, :confirmation => true
-  validates :email, :presence => true, :uniqueness => true
+  validates :email, :presence => true
   validates :first_name, :presence => true
   validates :last_name, :presence => true
 
@@ -21,6 +22,11 @@ class User < ActiveRecord::Base
     user = Jbuilder.new
     user.(self, :name, :email)
     user
+  end
+
+  def publish_user_creation_event
+    message = {:email => email, :uuid => "uuid"}
+    AUTH_SERVICE_EXCHANGER.publish message.to_json, :routing_key => "*"
   end
 
   private

@@ -3,6 +3,8 @@ source 'https://rubygems.org'
 gem 'rake', '10.0.2'
 gem 'rails', '3.2.0'
 gem 'pg'
+gem 'thin'
+gem 'amqp'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
